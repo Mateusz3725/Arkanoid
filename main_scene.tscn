@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://bkv4udpshe578"]
+
+[ext_resource type="PackedScene" uid="uid://dy0vpcnv8x5e3" path="res://player.tscn" id="1_mhskv"]
+[ext_resource type="Script" path="res://main_scene.gd" id="1_xg0li"]
+[ext_resource type="Script" path="res://player.gd" id="2_5ckvw"]
+[ext_resource type="PackedScene" uid="uid://bg44ugh2n1lj8" path="res://ball.tscn" id="3_230ww"]
+
+[node name="MainScene" type="Node2D"]
+script = ExtResource("1_xg0li")
+
+[node name="Player" parent="." instance=ExtResource("1_mhskv")]
+position = Vector2(400, 538)
+script = ExtResource("2_5ckvw")
+
+[node name="Ball" parent="." instance=ExtResource("3_230ww")]
+position = Vector2(400, 300)
+
+[node name="Label" type="Label" parent="."]
+offset_left = 380.0
+offset_top = 256.0
+offset_right = 420.0
+offset_bottom = 279.0
+text = "321"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
